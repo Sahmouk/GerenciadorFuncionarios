@@ -1,0 +1,209 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+ 
+        <style type="text/css">
+            header.masthead {
+                position: relative;
+                background-color: #343a40;  
+                background-size: cover;
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+ 
+            header.masthead .overlay {
+                position: absolute;
+                background-color: #212529;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0.3;
+            }
+            
+            body {
+                font-family: "Roboto", Helvetica, Arial, sans-serif;
+                font-weight: 50;
+                font-size: 12px;
+                line-height: 30px;
+                color: #888;
+                background: #212529;
+            }
+
+            .container1 {
+                max-width: 400px;
+                width: 100%;
+                margin-right: auto;
+            }
+            
+            .container2 {
+                max-width: 400px;
+                width: 100%;
+                margin-top: -80px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #contact input[type="text"],
+            #contact textarea,
+            #contact button[type="submit"] {
+                font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+            }
+
+            #contact {
+                background: #F9F9F9;
+                padding: 25px;
+                margin: 150px 0;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            }
+
+            #contact h3 {
+                display: block;
+                font-size: 30px;
+                font-weight: 300;
+                margin-bottom: 30px;
+            }
+
+            #contact h4 {
+                margin: 5px 0 15px;
+                display: block;
+                font-size: 13px;
+                font-weight: 400;
+            }
+
+            fieldset {
+                border: medium none !important;
+                margin: 0 0 10px;
+                min-width: 100%;
+                padding: 0;
+                width: 100%;
+            }
+
+            #contact input[type="text"],
+            #contact textarea {
+                width: 100%;
+                border: 1px solid #ccc;
+                background: #FFF;
+                margin: 0 0 5px;
+                padding: 10px;
+            }
+
+            #contact textarea {
+                height: 50px;
+                max-width: 100%;
+                resize: none;
+            }
+
+            #contact button[type="submit"] {
+                cursor: pointer;
+                width: 100%;
+                border: none;
+                background: #007bff;
+                color: #FFF;
+                margin: 0 0 5px;
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            #contact button[type="submit"]:hover {
+                background: #43A047;
+                -webkit-transition: background 0.3s ease-in-out;
+                -moz-transition: background 0.3s ease-in-out;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            #contact button[type="submit"]:active {
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+            }
+
+            .copyright {
+                text-align: center;
+            }
+
+            #contact input:focus,
+            #contact textarea:focus {
+                outline: 0;
+                border: 1px solid #aaa;
+            }
+
+            ::-webkit-input-placeholder {
+                color: #888;
+            }
+
+            :-moz-placeholder {
+                color: #888;
+            }
+
+            ::-moz-placeholder {
+                color: #888;
+            }
+
+            :-ms-input-placeholder {
+                color: #888;
+            }
+  
+            .div-select select {
+                width: 350px;
+                height:35px;
+                padding:10px 15px 10px 7px;
+                color:#888;
+            }
+        </style>
+        
+        <title> Cadastrar Funcionários </title>
+    </head>
+    <body>
+        <!-- Navegação -->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="inicio.php">Página inicial</a>
+                <div class="btn-justified">
+                    <a class="btn btn-basic btn-lg">Cadastrar</a>
+                    <a class="btn btn-primary btn-lg" href="editar1.php">Editar</a>
+                    <a class="btn btn-primary btn-lg" href="excluir.php">Excluir</a>
+                    <a class="btn btn-primary btn-lg" href="visualizar.php">Visualizar</a>
+                    <a class="btn btn-primary btn-lg" href="index.php">Sair</a>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Formulário -->
+        <div class="container2">  
+            <form id="contact" action="cadastrarS.php" method="post">
+                <center><h3>Cadastrar Funcionário</h3></center>
+                <h4>Preencha as informações abaixo.</h4>
+                <fieldset>
+                    <input placeholder="Nome" type="text" name="nome" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Endereço" type="text" name="endereco" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Salário" type="text" name="salario" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Departamento" type="text" name="departamento" required>
+                </fieldset>
+                <fieldset class="div-select">
+                    <select name="situacao">
+                        <option>Ativo</option>
+                        <option>Inativo</option>
+                        <option>Demitido</option>
+                    </select>  
+                </fieldset>
+                <fieldset>
+                    <button name="cadastrar" type="submit" id="contact-submit">Cadastrar</button>
+                </fieldset>
+            </form>
+        </div>
+ 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>
