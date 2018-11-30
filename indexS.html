@@ -1,0 +1,23 @@
+<?php
+
+include "./autenticacaoBD.php";
+
+$usuario = $_POST['usuario'];
+$senha = $_POST['senha'];
+
+$sql = "SELECT `usuario`, `senha` FROM `default` WHERE 1";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['usuario'] == $usuario && $row['senha'] == $senha) {
+            include "./inicio.php";
+        } else {
+            include "./index.php";
+        }
+    }
+}
+
+mysqli_close($conn);
+
+?>
