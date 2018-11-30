@@ -1,0 +1,227 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        header.masthead {
+            position: relative;
+            background-color: #343a40;  
+            background-size: cover;
+            padding-top: 12rem;
+            padding-bottom: 11rem;
+        }
+
+        header.masthead .overlay {
+            position: absolute;
+            background-color: #212529;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+        }
+
+        body {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 50;
+            font-size: 12px;
+            line-height: 30px;
+            color: #888;
+            background: white;
+        }
+
+        .container1 {
+            max-width: 400px;
+            width: 100%;
+            margin-right: auto;
+        }
+
+        .container2 {
+            max-width: 400px;
+            width: 100%;
+            margin-top: -80px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #contact input[type="text"],
+        #contact textarea,
+        #contact button[type="submit"] {
+            font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+        }
+
+        #contact {
+            background: #F9F9F9;
+            padding: 25px;
+            margin: 150px 0;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        #contact h3 {
+            display: block;
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        #contact h4 {
+            margin: 5px 0 15px;
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        fieldset {
+            border: medium none !important;
+            margin: 0 0 10px;
+            min-width: 100%;
+            padding: 0;
+            width: 100%;
+        }
+
+        #contact input[type="text"],
+        #contact textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            background: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+        }
+
+        #contact textarea {
+            height: 50px;
+            max-width: 100%;
+            resize: none;
+        }
+
+        #contact button[type="submit"] {
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            background: #007bff;
+            color: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        #contact button[type="submit"]:hover {
+            background: #43A047;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #contact button[type="submit"]:active {
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .copyright {
+            text-align: center;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            outline: 0;
+            border: 1px solid #aaa;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #888;
+        }
+
+        :-moz-placeholder {
+            color: #888;
+        }
+
+        ::-moz-placeholder {
+            color: #888;
+        }
+
+        :-ms-input-placeholder {
+            color: #888;
+        }
+
+    </style>
+
+    <title> Excluir Funcionários </title>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="inicio.php">Página inicial</a>
+            <div class="btn-justified">
+                <a class="btn btn-primary btn-lg" href="cadastrar.php">Cadastrar</a>
+                <a class="btn btn-primary btn-lg" href="editar1.php">Editar</a>
+                <a class="btn btn-basic btn-lg">Excluir</a>
+                <a class="btn btn-primary btn-lg" href="visualizar.php">Visualizar</a>
+                <a class="btn btn-primary btn-lg" href="index.php">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <?php
+    include "./autenticacaoBD.php";
+
+    $matricula = $_POST['matricula'];
+
+    $select = "SELECT `matricula` FROM `funcionarios` WHERE `matricula`='$matricula'";
+    $select_procu = mysqli_query($conn, $select);
+    $sql = "DELETE FROM `funcionarios` WHERE `matricula`='$matricula'"; 
+
+    if (mysqli_query($conn, $sql)) {
+        ?>
+        <header class="masthead text-white text-center">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <h1 class="mb-5">Funcionário excluido com sucesso!</h1>
+                    </div>
+                    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                        <div class="form-row">                                
+                            <div class="container">
+                                <div class="btn-justified">
+                                    <a class="btn btn-primary btn-lg" href="excluir.php">Realizar uma nova operação.</a>
+                                        <a class="btn btn-primary btn-lg" href="visualizar.php">Visualizar cadastros.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </header>
+    <?php    
+    } else {
+    ?>
+        <header class="masthead text-white text-center">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <h1 class="mb-5">Erro! Funcionário não encontrado.</h1>
+                    </div>
+                    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                        <div class="form-row">                                
+                            <div class="container">
+                                <div class="btn-justified">
+                                    <a class="btn btn-primary btn-lg" href="excluir.php">Tentar novamente</a>
+                                    <a class="btn btn-primary btn-lg" href="visualizar.php">Visualizar cadastros</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </header>
+    <?php
+    }
+
+    mysqli_close($conn);
+    ?>
+</body>
