@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="style.css">
+        
+        <title> Visualizar Funcionários </title>
+        
+    </head>
+    <body>
+        <!-- Navegação -->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="inicio.php">Página inicial</a>
+                <div class="btn-justified">
+                    <a class="btn btn-primary btn-lg" href="cadastrar.php">Cadastrar</a>
+                    <a class="btn btn-primary btn-lg" href="editar1.php">Editar</a>
+                    <a class="btn btn-primary btn-lg" href="excluir.php">Excluir</a>
+                    <a class="btn btn-basic btn-lg">Visualizar</a>
+                    <a class="btn btn-primary btn-lg" href="index.php">Sair</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="wrapper">
+            
+            <?php
+            include "./autenticacaoBD.php";
+            
+            $result = mysqli_query($conn, 'SELECT * FROM `funcionarios` WHERE 1');
+
+            if (mysqli_affected_rows($conn)) {
+                echo "<h4 class='mb-5'><font color='white'> Funcionários Cadastrados - Total: " . mysqli_affected_rows($conn) . " </font></h4>";
+            }
+            ?>
+            
+            <!-- Tabela de Funcionários -->
+            <div style="overflow: auto; width: 900px; height: 350px; border:solid 2px"> 
+            <div class="table">
+                <div class="row header">
+                    <div class="cell">
+                        Matrícula
+                    </div>
+                    <div class="cell">
+                        Nome
+                    </div>
+                    <div class="cell">
+                        Endereço
+                    </div>
+                    <div class="cell">
+                        Salário
+                    </div>
+                    <div class="cell">
+                        Departamento
+                    </div>
+                    <div class="cell">
+                        Situação
+                    </div>
+                </div>
+
+            <?php
+            include "./autenticacaoBD.php";
+            
+            $sql = "SELECT `matricula`, `nome`, `endereco`, `salario`, `departamento`, `situacao` FROM `funcionarios` WHERE 1 ORDER BY `nome`";
+            $result = mysqli_query($conn, $sql);
+
+            
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='row'>
+                            <div class='cell' data-title='Matricula'>
+                                # " . $row["matricula"] .
+                            "</div>
+                            <div class='cell' data-title='Nome'>"
+                                . $row['nome'] .
+                            "</div>
+                            <div class='cell' data-title='Endereço'>"
+                                . $row['endereco'] .
+                            "</div>
+                            <div class='cell' data-title='Salário'>
+                                R$ " . $row['salario'] .
+                            "</div>
+                            <div class='cell' data-title='Departamento'>"
+                                . $row['departamento'] .
+                            "</div>
+                            <div class='cell' data-title='Situação'>"
+                                . $row['situacao'] .
+                            "</div>
+                        </div>";
+                }
+            }
+            
+            mysqli_close($conn);
+
+            ?>
+            </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
